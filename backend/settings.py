@@ -95,7 +95,7 @@ if DEVELOPMENT_MODE is True:
     DATABASES = {
         "default": {
             "ENGINE": "django.db.backends.sqlite3",
-            "NAME": os.path.join(BASE_DIR, "db.sqlite3"),
+            "NAME": BASE_DIR / 'db.sqlite3',
         }
     }
 elif len(sys.argv) > 0 and sys.argv[1] != 'collectstatic':
@@ -179,8 +179,7 @@ DJOSER = {
 }
 
 AUTH_COOKIE = 'access'
-AUTH_COOKIE_ACCESS_MAX_AGE = 60 * 5
-AUTH_COOKIE_REFRESH_MAX_AGE = 60 * 60 * 24
+AUTH_COOKIE_MAX_AGE = 60 * 60 * 24
 AUTH_COOKIE_SECURE = getenv('AUTH_COOKIE_SECURE', 'True') == 'True'
 AUTH_COOKIE_HTTP_ONLY = True
 AUTH_COOKIE_PATH = '/'
@@ -204,7 +203,7 @@ SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
 
 CORS_ALLOWED_ORIGINS = getenv(
     'CORS_ALLOWED_ORIGINS', 
-    'http://locahost:3000,http://127.0.0.1:3000'
+    'http://localhost:3000,http://127.0.0.1:3000'
 ).split(',')
 
 CORS_ALLOW_CREDENTIALS = True # It is important to add for cross domain.
