@@ -1,0 +1,11 @@
+version: "3.12"
+services:
+  app:
+    build: .
+    volumes:
+      - .:/medec-backend
+    ports:
+      - 8000:8000
+    image: application:medec-backend
+    container_name: medec-backend-container
+    command: gunicorn backend.wsgi:application --bind 0.0.0.0:8000

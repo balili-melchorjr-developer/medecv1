@@ -1,0 +1,2 @@
+docker build --tag medec-django .
+docker run --publish 8000:8000 medec-django
